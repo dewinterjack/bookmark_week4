@@ -2,6 +2,10 @@ ENV["RACK_ENV"] = "test"
 
 require 'capybara/rspec'
 require_relative '../app/app'
+require_relative '../lib/manager'
+require 'pg'
+
+Capybara.app = BookmarkManager
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -13,6 +17,11 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.before(:each) do
+    conn = PG.connect(dbname: 'bookmark_manager_test')
+    conn.exec("TRUNCATE bookmarks")
+  end
 end
 
-Capybara.app = Manager
+
