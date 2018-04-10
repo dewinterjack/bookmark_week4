@@ -1,16 +1,26 @@
 <h1 class='title'>Bookmark Manager</h1>
 <ul>
   <% @bookmarks.each do |bookmark| %>
-    <li><a href="<%=bookmark%>"><%=bookmark%></a></li>
+    <li><a href="<%=bookmark.url%>">
+    <%if bookmark.title == "" then%>
+    <%= bookmark.url %>
+    <%else%>
+    <%=bookmark.title%>
+    <%end%>
+    </a></li>
   <% end %>
 </ul>
 <hr>
 <form method='post' action='/add'>
-  <input type='text' name='new_bookmark'>
+  <label for='new'>URL<br>
+  <input type='text' id='new' name='new_bookmark'></label><br>
+  <label for='title'>Title<br>
+  <input type='text' id='title' name='bookmark_title'></label>
+  <br>
   <input type='submit' value='Add Bookmark'>
 </form>
 <br>
-<span style='color:red'><%= flash[:no_url]%></span>
+<span style='color:red'><%= flash[:error]%></span>
 
 
 

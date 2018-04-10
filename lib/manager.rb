@@ -1,4 +1,5 @@
 require 'pg'
+require_relative './bookmark'
 
 class Manager 
 
@@ -15,7 +16,7 @@ class Manager
 
     @@conn.exec("SELECT * FROM bookmarks") do | result |
       result.each do | row |
-        @@bookmarks << row.values_at('url').join
+        @@bookmarks << Bookmark.new(row)
       end
     end
     @@bookmarks

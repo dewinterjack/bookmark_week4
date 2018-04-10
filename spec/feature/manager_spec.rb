@@ -23,6 +23,6 @@ feature 'User can add a bookmark' do
     fill_data
     visit("/")
     click_button('Add Bookmark')
-    expect(page).to have_content "Error: No url inputted."
+    expect(page).to have_content "No url inputted."
   end
 end
