@@ -3,9 +3,9 @@
   <% @bookmarks.each do |bookmark| %>
     <li><a href="<%=bookmark.url%>">
     <%if bookmark.title == "" then%>
-    <%= bookmark.url %>
+      <%= bookmark.url %>
     <%else%>
-    <%=bookmark.title%>
+      <%=bookmark.title%>
     <%end%>
     </a></li>
   <% end %>

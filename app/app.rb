@@ -13,7 +13,6 @@ class BookmarkManager < Sinatra::Base
     end
     Manager.wipe
     @bookmarks = Manager.all
-    p @bookmarks
     erb(:index)
   end
 
@@ -21,7 +20,7 @@ class BookmarkManager < Sinatra::Base
     if params[:new_bookmark] == "" then
       flash[:error] = "No url inputted."
     elsif params[:new_bookmark] =~ URI::regexp
-      Manager.add(params[:new_bookmark])
+      Manager.add(params[:new_bookmark], params[:bookmark_title])
     else
       flash[:error] = "Invalid url."
     end

@@ -16,14 +16,15 @@ class Manager
 
     @@conn.exec("SELECT * FROM bookmarks") do | result |
       result.each do | row |
-        @@bookmarks << Bookmark.new(row)
+        @@bookmarks << Bookmark.new(row.values_at('url').join, row.values_at('title').join)
       end
     end
     @@bookmarks
   end 
 
-  def self.add(bookmark)
-    @@conn.exec("INSERT INTO bookmarks (url) VALUES ('#{bookmark}')")
+  def self.add(url, title)
+    @@conn.exec("INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}')")
+    Bookmark.new(url,title)
   end
 
   def self.wipe
