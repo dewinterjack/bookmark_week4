@@ -1,9 +1,15 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative '../lib/manager'
 
 class BookmarkManager < Sinatra::Base
-  manager = Manager.new
+  register Sinatra::Flash
+  enable :sessions
+
   get '/' do
+    if flash[:no_url] then
+      "Error: #{flash[:no_url]}"
+    end
     Manager.wipe
     @bookmarks = Manager.all
     p @bookmarks
@@ -11,7 +17,11 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/add' do
-    manager.add(params[:new_bookmark])
+    if params[:new_bookmark] == "" then
+      flash[:no_url] = "No url inputted."
+    else
+      Manager.add(params[:new_bookmark])
+    end
     redirect '/'
   end
 

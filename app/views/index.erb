@@ -1,7 +1,7 @@
 <h1 class='title'>Bookmark Manager</h1>
 <ul>
   <% @bookmarks.each do |bookmark| %>
-    <li><%=bookmark%></li>
+    <li><a href="<%=bookmark%>"><%=bookmark%></a></li>
   <% end %>
 </ul>
 <hr>
@@ -10,5 +10,8 @@
   <input type='submit' value='Add Bookmark'>
 </form>
 <br>
+<span style='color:red'><%= flash[:no_url]%></span>
+
+
 
 

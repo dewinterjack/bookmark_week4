@@ -21,8 +21,8 @@ class Manager
     @@bookmarks
   end 
 
-  def add(bookmark)
-    @@conn.exec("INSERT INTO bookmarks (url) VALUES ('%s')" % bookmark)
+  def self.add(bookmark)
+    @@conn.exec("INSERT INTO bookmarks (url) VALUES ('#{bookmark}')")
   end
 
   def self.wipe
