@@ -1,7 +1,7 @@
 ENV["RACK_ENV"] = "test"
 
 require 'capybara/rspec'
-require_relative '../app/manager'
+require_relative '../app/app'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
