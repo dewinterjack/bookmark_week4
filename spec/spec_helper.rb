@@ -1,7 +1,7 @@
 ENV["RACK_ENV"] = "test"
 
 require 'capybara/rspec'
-require_relative '../app/bookmark'
+require_relative '../app/manager'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -15,4 +15,4 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
 
-Capybara.app = Bookmark
+Capybara.app = Manager

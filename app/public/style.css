@@ -1,0 +1,19 @@
+body{
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 22px;
+  background-color: #EEEEEE;
+}
+
+.container{
+  margin:auto;
+  width: 50%;
+  border-color: black;
+  border-style: solid;
+  border-left: 1px;
+  border-right: 1px;
+}
+
+.title{
+  text-align: center;
+}
