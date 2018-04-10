@@ -17,3 +17,13 @@ body{
 .title{
   text-align: center;
 }
+
+#update{
+  position: absolute;
+  right: 28%;
+}
+
+#delete{
+  position: absolute;
+  right: 33%;
+}
