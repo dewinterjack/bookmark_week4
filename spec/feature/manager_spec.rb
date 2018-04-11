@@ -15,14 +15,22 @@ feature 'User can add a bookmark' do
   scenario 'by filling in a url and hitting submit' do
     fill_data
     visit("/")
-    fill_in 'new_bookmark', with: 'https://bbc.co.uk' 
+    fill_in 'new_bookmark', with: 'http://bbc.co.uk' 
     click_button('Add Bookmark')
-    expect(page).to have_content "https://bbc.co.uk"
+    expect(page).to have_content "http://bbc.co.uk"
   end
   scenario 'hitting submit without filling in a url' do
     fill_data
     visit("/")
     click_button('Add Bookmark')
     expect(page).to have_content "No url inputted."
+  end
+  scenario 'user can give a title' do
+    fill_data
+    visit("/")
+    fill_in 'new_bookmark', with: 'https://bbc.co.uk' 
+    fill_in 'bookmark_title', with: 'BBC'
+    click_button('Add Bookmark')
+    expect(page).to have_content "BBC"
   end
 end
