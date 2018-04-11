@@ -1,4 +1,4 @@
-# Bookmark Manager - Week 4 
+# bookmark_week4
 Bookmark Manager using Ruby/Sinatra &amp; PostgreSQL
 
 User Stories:
@@ -16,4 +16,13 @@ I want to be able to add the page to my bookmarks.
 ```
 As a User, so I can clear up space,
 I want to be able to remove a page I don't need anymore from my bookmarks.
+```
+
+### Instructions
+
+```
+rackup
+
+localhost:9292
+
 ```
