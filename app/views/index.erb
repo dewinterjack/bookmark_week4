@@ -1,6 +1,6 @@
 <h1 class='title'>Bookmark Manager</h1>
 <% @bookmarks.each do |bookmark| %>
-  <a href="<%=bookmark.url%>">
+  <a href="<%=bookmark.url%>" target="_blank">
   <%if bookmark.title == "" then%>
     <%= bookmark.url %>
   <%else%>
