@@ -1,3 +1,4 @@
+require 'data_mapper'
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'uri'
@@ -6,6 +7,14 @@ require_relative '../lib/manager'
 class BookmarkManager < Sinatra::Base
   register Sinatra::Flash
   enable :sessions
+
+  configure :development do
+    DataMapper.setup(:default, 'postgres://localhost/bookmark_manager')
+  end
+
+  configure :test do
+    DataMapper.setup(:default, 'postgres://localhost/bookmark_manager_test')
+  end
 
   get '/' do
     if flash[:error] then
