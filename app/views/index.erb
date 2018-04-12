@@ -1,7 +1,7 @@
 <h1 class='title'>Bookmark Manager</h1>
 <form method='post' action='/delete'>
   <% @bookmarks.each do |bookmark| %>
-    <input type="checkbox" name="delete[]" value="<%=bookmark.title%>">
+    <input type="checkbox" name="delete[]" value="<%=bookmark.url%>">
     <a href="<%=bookmark.url%>" target="_blank">
     <%if bookmark.title == "" then%>
       <%= bookmark.url %>

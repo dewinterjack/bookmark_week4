@@ -27,5 +27,15 @@ class BookmarkManager < Sinatra::Base
     redirect '/'
   end
 
+  post '/delete' do
+    p params[:delete]
+    if params[:delete] == nil then
+      flash[:error] = "No bookmarks selected!"
+    else
+      Manager.delete(params[:delete])
+    end
+    redirect '/'
+  end
+
   run! if app_file == $0
 end

@@ -27,6 +27,18 @@ class Manager
     Bookmark.new(url,title)
   end
 
+  def self.delete(bookmarks)
+    query = "DELETE FROM bookmarks WHERE url = '#{bookmarks[0]}'"
+    if bookmarks.length > 1 then
+      bookmarks.each_with_index do |bookmark, index|
+        if index > 0
+          query += " OR url = '#{bookmark}'"
+        end
+      end
+    end
+      @@conn.exec(query)
+  end
+
   def self.wipe
     @@bookmarks.clear
   end
