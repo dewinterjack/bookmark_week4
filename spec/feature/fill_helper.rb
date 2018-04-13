@@ -1,8 +1,13 @@
 require 'pg'
+require_relative '../../lib/bookmark'
 
 def fill_data
-  connection = PG.connect(dbname: 'bookmark_manager_test')
-  connection.exec("INSERT INTO bookmarks (url) VALUES('http://makersacademy.com');")
-  connection.exec("INSERT INTO bookmarks (url) VALUES('http://destroyallsoftware.com');")
-  connection.exec("INSERT INTO bookmarks (url) VALUES('http://google.com');")
+  DataMapper.setup(:default, 'postgres://localhost/bookmark_manager_test')
+  DataMapper.auto_upgrade!
+  test = Hash.new
+  test['url'] = 'http://makersacademy.com'
+  Bookmark.create(test)
+  Bookmark.create(:url => 'http://destroyallsoftware.com')
+  Bookmark.create(:url => 'http://google.com')
+  DataMapper.auto_upgrade!
 end

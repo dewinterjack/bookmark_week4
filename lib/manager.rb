@@ -2,11 +2,13 @@ require 'pg'
 require_relative './bookmark'
 
 class Manager 
-
-  DataMapper.setup(:default, 'postgres://localhost/bookmark_manager')
+  if ENV["RACK_ENV"] == "test" then
+    DataMapper.setup(:default, 'postgres://localhost/bookmark_manager_test')
+  else
+    DataMapper.setup(:default, 'postgres://localhost/bookmark_manager')
+  end
 
   def self.all
-    DataMapper.auto_upgrade!
     Bookmark.all
   end
 
@@ -20,6 +22,8 @@ class Manager
     end
     
   end
+
+
 
 
   # attr_reader :conn

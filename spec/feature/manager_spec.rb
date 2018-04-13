@@ -5,17 +5,16 @@ feature 'User enters site' do
   scenario 'can see all bookmarks' do
     fill_data
     visit("/")
-
-    expect(page).to have_content "http://makersacademy.com"
-    expect(page).to have_content "http://destroyallsoftware.com"
-    expect(page).to have_content "http://google.com"
+    expect(page).to have_content 'http://makersacademy.com'
+    expect(page).to have_content 'http://destroyallsoftware.com'
+    expect(page).to have_content 'http://google.com'
   end
 end
 feature 'User can add a bookmark' do
   scenario 'by filling in a url and hitting submit' do
     fill_data
     visit("/")
-    fill_in 'new_bookmark', with: 'http://bbc.co.uk' 
+    fill_in 'url', with: 'http://bbc.co.uk' 
     click_button('Add Bookmark')
     expect(page).to have_content "http://bbc.co.uk"
   end
@@ -28,8 +27,8 @@ feature 'User can add a bookmark' do
   scenario 'user can give a title' do
     fill_data
     visit("/")
-    fill_in 'new_bookmark', with: 'https://bbc.co.uk' 
-    fill_in 'bookmark_title', with: 'BBC'
+    fill_in 'url', with: 'https://bbc.co.uk' 
+    fill_in 'title', with: 'BBC'
     click_button('Add Bookmark')
     expect(page).to have_content "BBC"
   end
